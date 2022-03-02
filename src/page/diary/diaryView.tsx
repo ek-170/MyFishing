@@ -18,6 +18,9 @@ const DiaryView: VFC = () => {
     
     const [orderedColumns, setOrderedColumns] = useState<Column[]>();
 
+    // URLパラメータからid値を取得する
+    // 取得値がidの正規表現に合致しない場合は新規レコード作成画面とみなす
+    
     // ページ初期化
     useEffect(()=> {       
         (
@@ -74,7 +77,7 @@ const DiaryView: VFC = () => {
                         <MFButton type={'button'} disabled={false} mode={'positive'}>編集</MFButton>
                     </StyledButtonContainer>
                     <StyledButtonContainer>
-                        <MFButton type={'button'} disabled={false} mode={'negative'}>戻る</MFButton>
+                        <MFButton type={'button'} disabled={false} mode={'negative'} hidden={true}>戻る</MFButton>
                     </StyledButtonContainer>
                 </StyledButtonWrapper>
             </StyledWrapper>

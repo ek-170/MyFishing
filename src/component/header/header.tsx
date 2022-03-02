@@ -1,9 +1,9 @@
 import { VFC, useState, useRef, useEffect} from 'react';
 import styled from "styled-components";
-import GlassImage from 'component/header/images/GlassImage.png';
-import PenImage from 'component/header/images/PenImage.png';
-import HomeImage from 'component/header/images/HomeImage.png';
-import GearImage from 'component/header/images/GearImage.png';
+import GlassImage from 'img/GlassImage.png';
+import PenImage from 'img/PenImage.png';
+import HomeImage from 'img/HomeImage.png';
+import GearImage from 'img/GearImage.png';
 import { IconLink } from 'component/header/iconLink';
 import { container } from 'const/size';
 import character from 'const/character';
@@ -39,7 +39,7 @@ const Header: VFC = () => {
         width: '40px',
     },{
         id: 'editiIcon',
-        to: '/entry',
+        to: '/entry/new',
         src: PenImage,
         alt: 'edit',
         width: '40px',

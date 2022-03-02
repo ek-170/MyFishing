@@ -30,7 +30,7 @@ import { useNavigate } from 'react-router-dom'
 const DiaryEntry: VFC = () => {
     // 各項目のuseStateを宣言
     const [place, setPlace] = useState('');
-    const [caughtFish, setCaughtFIsh] = useState(['']);
+    const [caughtFish, setCaughtFish] = useState(['']);
     const [comment, setComment] = useState('');
     const [rod, setRod] = useState(['']);
     const [method, setMethod] = useState(['']);
@@ -40,11 +40,12 @@ const DiaryEntry: VFC = () => {
     const [tide, setTide] = useState('');
 
     const [orderedColumns, setOrderedColumns] = useState<Column[]>();
-    // const orderedColumns = useRef<Column[]>(); これだと初期化処理内でcurrentに値を入れてもうまく項目が表示されない
-
     const [isLoad, setIsLoad] = useState<boolean>(false);
 
     const navigate = useNavigate();
+
+    // URLパラメータからid値を取得する
+    // 取得値がidの正規表現に合致しない場合は新規レコード作成画面とみなす
 
     // ページ初期化
     useEffect(()=> {       
@@ -58,20 +59,20 @@ const DiaryEntry: VFC = () => {
                     // サーバーから初期値を取得 await
 
                     // サーバーからの値をrecordに注入
-                    for(let c of columns){
-                        if(testData[c.id]) c.value = testData[c.id];
-                    }
+                    // for(let c of columns){
+                    //     if(testData[c.id]) c.value = testData[c.id];
+                    // }
 
                     // 初期値を各stateにセット
-                    setPlace(testData.place ?? '');
-                    setCaughtFIsh(testData.caughtFish ?? []);
-                    setComment(testData.comment ?? '');
-                    setRod(testData.rod ?? []);
-                    setMethod(testData.method ?? []);
-                    setLure(testData.lure ?? []);
-                    setWeather(testData.weather ?? '');
-                    setWind(testData.wind ?? 0);
-                    setTide(testData.tide ?? '');
+                    // setPlace(testData.place ?? '');
+                    // setCaughtFish(testData.caughtFish ?? []);
+                    // setComment(testData.comment ?? '');
+                    // setRod(testData.rod ?? []);
+                    // setMethod(testData.method ?? []);
+                    // setLure(testData.lure ?? []);
+                    // setWeather(testData.weather ?? '');
+                    // setWind(testData.wind ?? 0);
+                    // setTide(testData.tide ?? '');
                 //ここまで編集時のみの処理
                 
                 // columnOrderの順に項目の並び替え
@@ -118,7 +119,7 @@ const DiaryEntry: VFC = () => {
     const injectHandleChange = (columns:Column[]):void => {
         for(let c of columns){
             if(c.id === 'place') c.handleChange = setPlace;
-            if(c.id === 'caughtFish') c.handleChange = setCaughtFIsh;
+            if(c.id === 'caughtFish') c.handleChange = setCaughtFish;
             if(c.id === 'comment') c.handleChange = setComment;
             if(c.id === 'rod') c.handleChange = setRod;
             if(c.id === 'method') c.handleChange = setMethod;
