@@ -2,6 +2,7 @@ package config
 
 import (
 	"log"
+	"myfishing/backend/logging"
 
 	"gopkg.in/go-ini/ini.v1"
 )
@@ -17,6 +18,7 @@ var Config ConfigList
 
 func init() {
 	LoadConfig()
+	logging.LoggingSettings(Config.LogFile)
 }
 
 func LoadConfig() {
@@ -28,5 +30,6 @@ func LoadConfig() {
 		Port:      cfg.Section("web").Key("port").MustString("8080"),
 		SQLDriver: cfg.Section("db").Key("driver").String(),
 		DbName:    cfg.Section("db").Key("name").String(),
+		LogFile:   cfg.Section("web").Key("logfile").String(),
 	}
 }
