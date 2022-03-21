@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { header, container } from 'const/size';
-import character from 'const/character';
-import { color } from 'const/color';
+import { header, container } from 'utils/const/size';
+import character from 'utils/const/character';
+import { color } from 'utils/const/color';
 
 /* 
 ページ全体

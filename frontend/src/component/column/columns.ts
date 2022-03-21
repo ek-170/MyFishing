@@ -1,5 +1,17 @@
-import { TextColumn, NumberColumn, PicklistColumn, MultiPicklistColumn, TextareaColumn } from 'component/column/columnDef';
+import { TextColumn, NumberColumn, DateColumn, PicklistColumn, MultiPicklistColumn, TextareaColumn } from 'component/column/columnDef';
 
+export const dateColumns:DateColumn[] = [
+    {
+        label: '日付',
+        id: 'date',
+        type: 'input',
+        input: {
+            type: 'date',
+            name: 'date',
+        },
+        value: undefined,
+    }
+]
 
 export const textColumns:TextColumn[] = [
     {

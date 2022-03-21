@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { ButtonProps,ButtonType, ButtonMode } from 'component/button/buttonDef'
 import styled from "styled-components";
-import character from 'const/character';
+import character from 'utils/const/character';
 
 export const MFButton: VFC<ButtonProps<ButtonType, ButtonMode>> = ({type, mode, children, disabled ,onClick, hidden}) =>{
     return(

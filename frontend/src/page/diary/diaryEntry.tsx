@@ -11,24 +11,30 @@ import {
     PicklistColumn, 
     MultiPicklistColumn, 
     TextareaColumn, 
+    isDateForInput,
+    DateForInput,
 } from 'component/column/columnDef';
 import {
     textColumns, 
     numberColumns,
     picklistColumns,
     multiPicklistColumns,
-    textareaColumns
+    textareaColumns,
+    dateColumns
 } from 'component/column/columns';
 import styled from "styled-components";
 import { StyledWrapper, StyledOuter } from 'commonCSS/style'
-import { testData } from 'testData'
+// import { testData } from 'testData'
 import { order } from 'page/diary/dialyColumnOrder'
 import { ModalSppiner } from 'component/spinner/modalSpinner'
 import { useNavigate } from 'react-router-dom'
+import { formatDate, DateFormat } from 'utils/format/formatDate'
+import { Diary } from 'dataType/diary'
 
 
 const DiaryEntry: VFC = () => {
     // 各項目のuseStateを宣言
+    const [date, setDate] = useState(formatDate(new Date(), DateFormat.YYYY_MM_DD));
     const [place, setPlace] = useState('');
     const [caughtFish, setCaughtFish] = useState(['']);
     const [comment, setComment] = useState('');
@@ -53,7 +59,7 @@ const DiaryEntry: VFC = () => {
             async () => {
                 console.log('useEffect start');
                 // 項目定義情報の取得
-                const columns: Column[] = [...textColumns, ...numberColumns, ...picklistColumns, ...multiPicklistColumns, ...textareaColumns];
+                const columns: Column[] = [...textColumns, ...numberColumns, ...dateColumns, ...picklistColumns, ...multiPicklistColumns, ...textareaColumns];
             
                 // ここから編集時のみの処理
                     // サーバーから初期値を取得 await
@@ -98,6 +104,7 @@ const DiaryEntry: VFC = () => {
 
     const injectHandleChange = (columns:Column[]):void => {
         for(let c of columns){
+            if(c.id === 'date') c.handleChange = setDate;
             if(c.id === 'place') c.handleChange = setPlace;
             if(c.id === 'caughtFish') c.handleChange = setCaughtFish;
             if(c.id === 'comment') c.handleChange = setComment;
@@ -114,7 +121,8 @@ const DiaryEntry: VFC = () => {
         console.log('★submit★');
         setIsLoad(true);
         e.preventDefault();
-        const data = {
+        const data: Diary = {
+            date: (isDateForInput(date)) ? date : undefined ,
             place: place,
             caughtFish: caughtFish,
             comment: comment,

@@ -9,6 +9,7 @@ import { Column } from 'component/column/columnDef';
 import {
     textColumns, 
     numberColumns,
+    dateColumns,
     picklistColumns,
     multiPicklistColumns,
     textareaColumns
@@ -28,12 +29,14 @@ const DiaryView: VFC = () => {
                 console.log('@Diary View@');
                 console.log('useEffect start');
                 // 項目定義情報の取得
-                const columns: Column[] = [...textColumns, ...numberColumns, ...picklistColumns, ...multiPicklistColumns, ...textareaColumns];
+                const columns: Column[] = [...textColumns, ...numberColumns, ...dateColumns,...picklistColumns, ...multiPicklistColumns, ...textareaColumns];
                 console.log('columns');
                 console.log(columns);
                 
                 // サーバーから初期値を取得
 
+                // 項目「日付」のタイプガードをサーバから取得したデータに対して実施する
+                
                 // サーバーからの値をrecordに注入
                 for(let c of columns){
                     if(testData[c.id]) c.value = testData[c.id];

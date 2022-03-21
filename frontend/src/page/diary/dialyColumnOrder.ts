@@ -1,4 +1,5 @@
 export const order: string[] = [
+        'date',
         'place',
         'caughtFish',
         'comment',

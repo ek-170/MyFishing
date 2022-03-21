@@ -1,6 +1,8 @@
 import { Diary } from 'dataType/diary'
+import { DateForInput } from 'component/column/columnDef'
 
 export const testData: Diary = {
+    date: '2022-04-01' as DateForInput,
     place: '大洗漁港',
     caughtFish: ['aji','kasago'],
     comment: 'テストコメントです。',

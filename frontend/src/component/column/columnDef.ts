@@ -1,15 +1,11 @@
 import { Options, MultiOptions } from 'component/column/input/pickListValueDef'
 import { DiaryId } from 'dataType/diary'
 
-export type ValueType = string | string[] | number
+export type ValueType = string | string[] | number | DateForInput
 export type BaseColumnProps = {
     label: string,
     id: ColumnId,
     value?: ValueType,
-}
-
-type HandleChange = {
-    handleChange?: any
 }
 
 export type Picklist = {
@@ -28,7 +24,7 @@ export type MultiPicklist = {
     options: MultiOptions[],
 }
 
-export type InputType = 'text' | 'number'
+export type InputType = 'text' | 'number' | 'date'
 export type Input<T extends InputType> = {
     input: {
         type:T,
@@ -42,6 +38,8 @@ export type Input<T extends InputType> = {
         ? string
         : T extends 'number'
         ? number
+        : T extends 'date'
+        ? DateForInput
         : never,
 }
 
@@ -58,17 +56,25 @@ export type Textarea = {
 }
 
 
+type HandleChange = { handleChange?: any }
 export type PicklistProps = Picklist & BaseColumnProps & HandleChange
 export type MultiPicklistProps = MultiPicklist & BaseColumnProps & HandleChange
 export type InputProps<T extends InputType> = Input<T> & BaseColumnProps & HandleChange
 export type TextareaProps = Textarea & BaseColumnProps & HandleChange
 
 type ColumnType = { type: 'input' | 'picklist' | 'multipicklist' |'textarea' }
-export type Column = ( TextColumn | NumberColumn | PicklistColumn | MultiPicklistColumn | TextareaColumn );
+export type Column = ( TextColumn | NumberColumn | DateColumn |PicklistColumn | MultiPicklistColumn | TextareaColumn );
 export type TextColumn = InputProps<'text'> & ColumnType
 export type NumberColumn = InputProps<'number'> & ColumnType
+export type DateColumn = InputProps<'date'> & ColumnType
 export type PicklistColumn = PicklistProps & ColumnType
 export type MultiPicklistColumn = MultiPicklistProps & ColumnType
 export type TextareaColumn = TextareaProps & ColumnType
 
 type ColumnId = DiaryId
+
+declare const dateSymbol: unique symbol
+export type DateForInput = string & { [dateSymbol]: never }
+export const isDateForInput = (value: string): value is DateForInput => {
+    return /^[0-9]{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$/.test(value);
+}

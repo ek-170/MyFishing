@@ -5,8 +5,8 @@ import PenImage from 'img/PenImage.png';
 import HomeImage from 'img/HomeImage.png';
 import GearImage from 'img/GearImage.png';
 import { IconLink } from 'component/header/iconLink';
-import { container } from 'const/size';
-import character from 'const/character';
+import { container } from 'utils/const/size';
+import character from 'utils/const/character';
 
 const Header: VFC = () => {
     const [isHidden, setIsHidden] = useState(true);
