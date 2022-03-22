@@ -11,6 +11,7 @@ CREATE TABLE users (
 
 CREATE TABLE diary (
   id           VARCHAR(26) NOT NULL UNIQUE,
+  -- user_id      FOREIGN KEY
   fishingDate  DATE,
   place        VARCHAR(100),       
   caughtFish   VARCHAR(80),       
