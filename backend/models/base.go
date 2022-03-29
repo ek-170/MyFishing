@@ -21,9 +21,15 @@ func init() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	defer Db.Close()
+
+	err = Db.Ping()
+	if err != nil {
+		panic(err.Error())
+	}
 }
 
-func createULID() string {
+func createUlid() string {
 	t := time.Unix(1000000, 0)
 	entropy := ulid.Monotonic(rand.New(rand.NewSource(t.UnixNano())), 0)
 	return fmt.Sprint(ulid.MustNew(ulid.Timestamp(t), entropy))
