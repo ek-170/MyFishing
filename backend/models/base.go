@@ -17,16 +17,19 @@ var Db *sql.DB
 var err error
 
 func init() {
+	fmt.Println("@ base.go init")
+	//★後でUser Name,Passを外だしする
 	Db, err := sql.Open("mysql", "Muramoto:KuA!h97F3)-dV5X@tcp(localhost:3306)/mysql")
+
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer Db.Close()
+	// defer Db.Close()
 
-	err = Db.Ping()
-	if err != nil {
-		panic(err.Error())
-	}
+	// err = Db.Ping()
+	// if err != nil {
+	// 	panic(err.Error())
+	// }
 }
 
 func createUlid() string {

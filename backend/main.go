@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"myfihing/backend/models"
-	"myfihing/backend/server"
+	"myfishing/backend/models"
 )
 
 func main() {
+	fmt.Println("start")
 	fmt.Println(models.Db)
+	fmt.Println("finish")
 
-	server.StartMainServer()
+	// server.StartMainServer()
 }
