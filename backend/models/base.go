@@ -26,7 +26,7 @@ func init() {
 	}
 	// defer Db.Close()
 
-	// err = Db.Ping()
+	Db.Ping()
 	// if err != nil {
 	// 	panic(err.Error())
 	// }
