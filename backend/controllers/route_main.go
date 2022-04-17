@@ -18,3 +18,14 @@ func Top(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 }
+
+func Diaries(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles(index)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
