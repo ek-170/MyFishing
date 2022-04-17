@@ -7,6 +7,7 @@ import (
 
 type Diary struct {
 	id           string
+	userId       string
 	fishingDate  string
 	place        string
 	caughtFish   string
@@ -17,23 +18,23 @@ type Diary struct {
 	weather      string
 	wind         int
 	tide         string
-	created_at   time.Time
+	createdAt    time.Time
 }
 
 func GetDiary(id int) (diary Diary, err error) {
 	cmd := `select  id, 
-					fishingDate, 
-					place, 
-					diaryComment, 
-					rod, 
-					method, 
-					lure, 
-					weather, 
-					wind,
-					tide,
-					created_at 
-			from    diaries
-			where   id = $1`
+		fishingDate, 
+		place, 
+		diaryComment, 
+		rod, 
+		method, 
+		lure, 
+		weather, 
+		wind,
+		tide,
+		createdAt 
+		from    diaries
+		where   id = $1`
 	diary = Diary{}
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -48,9 +49,20 @@ func GetDiary(id int) (diary Diary, err error) {
 		&diary.weather,
 		&diary.wind,
 		&diary.tide,
-		&diary.created_at)
+		&diary.createdAt)
 
 	return diary, err
+}
+
+func (u *User) CreateDiary(  ) (err error) {
+	cmd := `insert into diaries (
+		) values (  )`
+
+	_, err = Db.Exec(cmd, content, u.ID, time.Now())
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return err
 }
 
 func (d *Diary) UpdateDiary() error {

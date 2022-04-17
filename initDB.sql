@@ -6,12 +6,12 @@ CREATE TABLE users (
   name       VARCHAR(255),
   email      VARCHAR(255) NOT NULL UNIQUE,
   password   VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP NOT NULL   
+  createdAt  TIMESTAMP NOT NULL   
 );
 
-CREATE TABLE diary (
+CREATE TABLE diaries (
   id           VARCHAR(26) NOT NULL UNIQUE,
-  -- user_id      FOREIGN KEY
+  userId       VARCHAR(26),
   fishingDate  DATE,
   place        VARCHAR(100),       
   caughtFish   VARCHAR(80),       
@@ -21,5 +21,7 @@ CREATE TABLE diary (
   lure         VARCHAR(100),       
   weather      VARCHAR(30),       
   wind         TINYINT UNSIGNED,       
-  tide         VARCHAR(2)
+  tide         VARCHAR(2),
+  createdAt  TIMESTAMP NOT NULL,
+  FOREIGN KEY fk_userid(userid) REFERENCES users(id)
 );
