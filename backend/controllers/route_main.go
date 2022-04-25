@@ -3,13 +3,13 @@ package controllers
 import (
 	"html/template"
 	"log"
+	"myfishing/backend/consts"
+	"myfishing/backend/models"
 	"net/http"
 )
 
-const index string = "../frontend/build/"
-
 func Top(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(index)
+	t, err := template.ParseFiles(consts.Index)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -20,12 +20,25 @@ func Top(w http.ResponseWriter, r *http.Request) {
 }
 
 func Diaries(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(index)
-	if err != nil {
-		log.Fatalln(err)
+	d := models.Diary{}
+	switch r.Method {
+	case "POST", "PUT":
+		d = models.Diary{
+			// Diaryの値を埋める
+		}
 	}
-	err = t.Execute(w, nil)
-	if err != nil {
-		log.Fatalln(err)
+	switch r.Method {
+	case "GET":
+		_, err := models.GetDiary(i)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	case "POST":
+		d.CreateDiary()
+	case "PUT":
+		d.UpdateDiary()
+	case "DELETE":
+		models.DeleteDiary()
+		// defaultでHTTP 405 Error
 	}
 }
