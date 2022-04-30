@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 	"myfishing/backend/consts"
@@ -23,9 +25,7 @@ func Diaries(w http.ResponseWriter, r *http.Request) {
 	d := models.Diary{}
 	switch r.Method {
 	case "POST", "PUT":
-		d = models.Diary{
-			// Diaryの値を埋める
-		}
+		json.NewDecoder(r.Body).Decode(&d)
 	}
 	switch r.Method {
 	case "GET":
@@ -39,6 +39,7 @@ func Diaries(w http.ResponseWriter, r *http.Request) {
 		d.UpdateDiary()
 	case "DELETE":
 		models.DeleteDiary()
-		// defaultでHTTP 405 Error
+	default:
+		http.Error(w, fmt.Sprintf("Method %s is not allowed", r.Method), 405)
 	}
 }
