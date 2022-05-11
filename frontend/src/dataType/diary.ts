@@ -1,6 +1,7 @@
 import { DateForInput } from 'component/column/columnDef'
 
 export type Diary = {
+    userId?: string,
     date?: DateForInput,
     place?: string,
     caughtFish?: string[],

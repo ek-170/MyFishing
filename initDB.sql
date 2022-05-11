@@ -6,7 +6,7 @@ CREATE TABLE users (
   name       VARCHAR(255),
   email      VARCHAR(255) NOT NULL UNIQUE,
   password   VARCHAR(255) NOT NULL,
-  createdAt  TIMESTAMP NOT NULL   
+  createdAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
 );
 
 CREATE TABLE diaries (
@@ -22,6 +22,6 @@ CREATE TABLE diaries (
   weather      VARCHAR(30),       
   wind         TINYINT UNSIGNED,       
   tide         VARCHAR(2),
-  createdAt  TIMESTAMP NOT NULL,
+  createdAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY fk_userid(userid) REFERENCES users(id)
 );

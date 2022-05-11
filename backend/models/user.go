@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type Users struct {
+type User struct {
 	id        int
 	name      string
 	email     string
@@ -14,7 +14,7 @@ type Users struct {
 	diarys    []Diary
 }
 
-func (u *Users) CreateUser() (err error) {
+func (u *User) CreateUser() (err error) {
 	cmd := `insert into users (
 		id,
 		name,

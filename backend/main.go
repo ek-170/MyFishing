@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"myfishing/backend/controllers"
 	"myfishing/backend/models"
-	"myfishing/backend/server"
 )
 
 func main() {
@@ -11,5 +11,5 @@ func main() {
 	fmt.Println(models.Db)
 	fmt.Println("finish")
 
-	server.StartMainServer()
+	controllers.StartMainServer()
 }
