@@ -32,5 +32,6 @@ func (u *User) CreateUser() (err error) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	return err
 }

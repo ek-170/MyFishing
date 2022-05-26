@@ -9,7 +9,7 @@ type DiaryRepository interface {
 	GetDiary(id string) (diary Diary, err error)
 	CreateDiary(d Diary) (id int, err error)
 	UpdateDiary(d Diary) (err error)
-	DeleteDiary(d Diary) (err error)
+	DeleteDiary(id string) (err error)
 }
 
 type Diary struct {
@@ -103,7 +103,7 @@ func (dr *diaryRepository) CreateDiary(d Diary) (id int, err error) {
 		log.Fatalln(err)
 	}
 
-	err = Db.QueryRow("SELECT id FROM todo ORDER BY id DESC LIMIT 1").Scan(&id)
+	err = Db.QueryRow("SELECT id FROM diaries ORDER BY id DESC LIMIT 1").Scan(&id)
 
 	return
 }
@@ -141,9 +141,9 @@ func (dr *diaryRepository) UpdateDiary(d Diary) (err error) {
 	return
 }
 
-func (dr *diaryRepository) DeleteDiary(d Diary) (err error) {
+func (dr *diaryRepository) DeleteDiary(id string) (err error) {
 	cmd := `delete from diaries where id = $1`
-	_, err = Db.Exec(cmd, d.Id)
+	_, err = Db.Exec(cmd, id)
 	if err != nil {
 		log.Fatalln(err)
 	}

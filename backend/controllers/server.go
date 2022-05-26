@@ -1,14 +1,19 @@
 package controllers
 
 import (
+	"fmt"
 	"myfishing/backend/config"
+	"myfishing/backend/consts"
 	"myfishing/backend/models"
 	"net/http"
 	"regexp"
 )
 
 func ParseIdFromURL(r *http.Request, validPath *regexp.Regexp, targetPath int) string {
+	fmt.Println("@@Start ParseIdFromURL()@@")
+	fmt.Println("Path Value: " + r.URL.Path)
 	q := validPath.FindStringSubmatch(r.URL.Path)
+	fmt.Println(q)
 	if len(q) == 0 {
 		return ""
 	}
@@ -17,11 +22,15 @@ func ParseIdFromURL(r *http.Request, validPath *regexp.Regexp, targetPath int) s
 
 func StartMainServer() error {
 	var dr = models.NewDiaryRepository()
-	var hd = NewDiaryHandler(dr)
+	var dh = NewDiaryHandler(dr)
 
-	http.HandleFunc("/", Top)
+	var tr = models.NewTestRepository()
+	var th = NewTestHandler(tr)
 
-	http.HandleFunc("/diaries/", hd.HandleDiary)
+	http.Handle("/", http.FileServer(http.Dir(consts.Index)))
+
+	http.HandleFunc("/test/", th.HandleTest)
+	http.HandleFunc("/diaries/", dh.HandleDiary)
 
 	// http.HandleFunc("/search", )
 	// http.HandleFunc("/register", )

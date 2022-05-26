@@ -1,19 +1,20 @@
 package controllers
 
 import (
-	"html/template"
-	"log"
-	"myfishing/backend/consts"
 	"net/http"
 )
 
 func Top(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(consts.Index)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	err = t.Execute(w, nil)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	//このメソッドじゃだめ？？
+	// t, err := template.ParseFiles(consts.Index)
+	// files := http.FileServer(http.Dir(consts.Index))
+	// http.Handle("/static/", http.StripPrefix("/static/", files))
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
+	// err = t.Execute(w, nil)
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
+	// fmt.Fprintf(w, "hello\n")
 }

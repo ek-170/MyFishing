@@ -1,0 +1,313 @@
+2022/05/18 22:31:36 route_main.go:13: read ../frontend/build/: The handle is invalid.
+2022/05/18 22:31:50 route_main.go:13: read ../frontend/build/: The handle is invalid.
+2022/05/18 22:32:25 route_main.go:13: read ../frontend/build/: The handle is invalid.
+2022/05/18 22:54:03 server.go:3159: http: panic serving [::1]:51240: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0xe04ac0, 0x1056c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0xeab470, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x10000c000067550, {0xeab470, 0xc0000180a8}, {0xe59714, 0x112}, {0xc000067640, 0xc, 0xc}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xe3f580, {0xeab470, 0xc0000180a8}, {0xe59714, 0x112}, {0xc000067640, 0xc, 0xc})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*diaryRepository).CreateDiary(0x1, {{0x0, 0x0}, {0xc000018e90, 0x6}, {0x0, 0x0}, {0xc00000e6c0, 0x14}, {0xc000018ec0, ...}, ...})
+	C:/Users/klose/workspace/myfishing/backend/models/diary.go:89 +0x33c
+myfishing/backend/controllers.createDiary({0xeaa288, 0xc0001361c0}, 0xc0001e8500, 0xc00019e640)
+	C:/Users/klose/workspace/myfishing/backend/controllers/route_diaries.go:84 +0x29c
+myfishing/backend/controllers.(*diaryHandler).HandleDiary(0x800, {0xeaa288, 0xc0001361c0}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/route_diaries.go:42 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xdf5ce0, {0xeaa288, 0xc0001361c0}, 0xc0001361c0)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0xeaa288, 0xc0001361c0}, 0xc0001e8500)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0xea96d0}, {0xeaa288, 0xc0001361c0}, 0xc0001e8500)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc00006c320, {0xeab4e0, 0xc00018ec00})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/18 22:59:54 route_main.go:13: read ../frontend/build/: The handle is invalid.
+2022/05/18 23:01:02 route_main.go:13: open ../fontend/build/index.html: The system cannot find the path specified.
+2022/05/22 21:37:24 server.go:3159: http: panic serving [::1]:57245: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x3a1b80, 0x5fec50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x44ba50, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x0, {0x44ba50, 0xc0000180a8}, {0x3f6c32, 0x4f}, {0xc0000678f8, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc0002093d0, {0x44ba50, 0xc0000180a8}, {0x3f6c32, 0x4f}, {0xc0000678f8, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0xc0002540c0, {{0xc0002093d0, 0x6}, 0x39c3c0, 0xc00020a660})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:48 +0x125
+myfishing/backend/controllers.createTest({0x44a808, 0xc00027a0e0}, 0xc000260400, 0xc0002166b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:88 +0xf7
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x44a808, 0xc00027a0e0}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x3925c0, {0x44a808, 0xc00027a0e0}, 0xc00027a0e0)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x44a808, 0xc00027a0e0}, 0xc000260400)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x449c50}, {0x44a808, 0xc00027a0e0}, 0xc000260400)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc000221360, {0x44bac0, 0xc00020edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:40:47 server.go:3159: http: panic serving [::1]:57374: runtime error: invalid memory address or nil pointer dereference
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x3a1b80, 0x5fec50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x44ba50, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x0, {0x44ba50, 0xc0000180a8}, {0x3f6c32, 0x4f}, {0xc0001c38f8, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc000198090, {0x44ba50, 0xc0000180a8}, {0x3f6c32, 0x4f}, {0xc0001c38f8, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0xc0001ba000, {{0xc000198090, 0x6}, 0x39c3c0, 0xc0001800a0})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:48 +0x125
+myfishing/backend/controllers.createTest({0x44a808, 0xc0001b6000}, 0xc0001ae000, 0xc0002166b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:88 +0xf7
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x44a808, 0xc0001b6000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x3925c0, {0x44a808, 0xc0001b6000}, 0xc0001b6000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x44a808, 0xc0001b6000}, 0xc0001ae000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x449c50}, {0x44a808, 0xc0001b6000}, 0xc0001ae000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc0001a8000, {0x44bac0, 0xc00020edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:41:12 server.go:3159: http: panic serving [::1]:57384: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x7c1b80, 0xa1fc50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x86bb50, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0xc000067810, {0x86bb50, 0xc0000180a8}, {0x816c84, 0x4f}, {0xc000067890, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc00009c150, {0x86bb50, 0xc0000180a8}, {0x816c84, 0x4f}, {0xc000067890, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0x865b40, {{0xc00009c150, 0xc000067990}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:48 +0x125
+myfishing/backend/controllers.createTest({0x86a908, 0xc0000bc000}, 0xc0000b4000, 0xc0001966b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:91 +0x209
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x86a908, 0xc0000bc000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x7b25c0, {0x86a908, 0xc0000bc000}, 0xc0000bc000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x86a908, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x869d50}, {0x86a908, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc0001a1360, {0x86bbc0, 0xc00018edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:44:06 server.go:3159: http: panic serving [::1]:57406: runtime error: invalid memory address or nil pointer dereference
+goroutine 10 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x1171b80, 0x13cfc50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x121bc70, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0x121bc70, 0xc0000180a8}, {0x11c6cd2, 0x4f}, {0xc000067888, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc00009c150, {0x121bc70, 0xc0000180a8}, {0x11c6cd2, 0x4f}, {0xc000067888, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0x1215c60, {{0xc00009c150, 0xc000067980}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:51 +0x1c5
+myfishing/backend/controllers.createTest({0x121aa28, 0xc0000bc000}, 0xc0000b4000, 0xc00004af80)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:93 +0x256
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x121aa28, 0xc0000bc000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x11625c0, {0x121aa28, 0xc0000bc000}, 0xc0000bc000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x121aa28, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x1219e70}, {0x121aa28, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc00006d720, {0x121bce0, 0xc000101710})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:46:12 server.go:3159: http: panic serving [::1]:59000: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x1122b80, 0x1380c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x11cccd0, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0x11cccd0, 0xc0000180a8}, {0x1177ce2, 0x4f}, {0xc000067888, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc00009c150, {0x11cccd0, 0xc0000180a8}, {0x1177ce2, 0x4f}, {0xc000067888, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0x11c6cc0, {{0xc00009c150, 0xc000067980}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:53 +0x250
+myfishing/backend/controllers.createTest({0x11cba88, 0xc0000bc000}, 0xc0000b4000, 0xc0001966b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:93 +0x256
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x11cba88, 0xc0000bc000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x11135c0, {0x11cba88, 0xc0000bc000}, 0xc0000bc000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x11cba88, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x11caed0}, {0x11cba88, 0xc0000bc000}, 0xc0000b4000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc0001a1360, {0x11ccd40, 0xc00018edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:50:06 server.go:3159: http: panic serving [::1]:64126: runtime error: invalid memory address or nil pointer dereference
+goroutine 20 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x11b2b80, 0x1410c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x125ccd0, 0xc0000180a8}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0x125ccd0, 0xc0000180a8}, {0x1207ce2, 0x4f}, {0xc000067858, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc000086120, {0x125ccd0, 0xc0000180a8}, {0x1207ce2, 0x4f}, {0xc000067858, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0x1256cc0, {{0xc000086120, 0xc000067950}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:53 +0x250
+myfishing/backend/controllers.createTest({0x125ba88, 0xc0000ae000}, 0xc00009e000, 0xc00019e6b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:95 +0x2ca
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x125ba88, 0xc0000ae000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x11a35c0, {0x125ba88, 0xc0000ae000}, 0xc0000ae000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x125ba88, 0xc0000ae000}, 0xc00009e000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x125aed0}, {0x125ba88, 0xc0000ae000}, 0xc00009e000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc0001a9360, {0x125cd40, 0xc000190db0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:52:13 server.go:3159: http: panic serving [::1]:64147: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0xbf2b80, 0xe50c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0xc9cd50, 0xc0000aa058}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0xc9cd50, 0xc0000aa058}, {0xc47cec, 0x4f}, {0xc0000a1808, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0xc0000aaa70, {0xc9cd50, 0xc0000aa058}, {0xc47cec, 0x4f}, {0xc0000a1808, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0xc96d40, {{0xc0000aaa70, 0xc0000a1960}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:53 +0x250
+myfishing/backend/controllers.createTest({0xc9bb08, 0xc000202000}, 0xc0000fa000, 0xc00011e6b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:98 +0x402
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0xc9bb08, 0xc000202000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xbe35c0, {0xc9bb08, 0xc000202000}, 0xc000202000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0xc9bb08, 0xc000202000}, 0xc0000fa000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0xc9af50}, {0xc9bb08, 0xc000202000}, 0xc0000fa000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc000129360, {0xc9cdc0, 0xc00010edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/22 22:53:06 server.go:3159: http: panic serving [::1]:53137: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0xbf2b80, 0xe50c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0xc9cd50, 0xc0000aa058}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0xc9cd50, 0xc0000aa058}, {0xc47cec, 0x4f}, {0xc0000a1808, 0x3, 0x3}, 0x0)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0x457, {0xc9cd50, 0xc0000aa058}, {0xc47cec, 0x4f}, {0xc0000a1808, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0xc96d40, {{0xc0000180f0, 0xc0000a1960}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:53 +0x250
+myfishing/backend/controllers.createTest({0xc9bb08, 0xc000064000}, 0xc00005e000, 0xc00011e6b0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:98 +0x402
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0xc9bb08, 0xc000064000}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xbe35c0, {0xc9bb08, 0xc000064000}, 0xc000064000)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0xc9bb08, 0xc000064000}, 0xc00005e000)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0xc9af50}, {0xc9bb08, 0xc000064000}, 0xc00005e000)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc000129400, {0xc9cdc0, 0xc00010edb0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/24 20:50:22 server.go:3159: http: panic serving [::1]:54063: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1801 +0xb9
+panic({0x532b80, 0x790c50})
+	C:/Program Files/Go/src/runtime/panic.go:1047 +0x266
+database/sql.(*DB).conn(0x0, {0x5dcd30, 0xc000128058}, 0x1)
+	C:/Program Files/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).exec(0x20, {0x5dcd30, 0xc000128058}, {0x587cf8, 0x4f}, {0xc00011b808, 0x3, 0x3}, 0xe)
+	C:/Program Files/Go/src/database/sql/sql.go:1622 +0x5d
+database/sql.(*DB).ExecContext(0x5d6d20, {0x5dcd30, 0xc000128058}, {0x587cf8, 0x4f}, {0xc00011b808, 0x3, 0x3})
+	C:/Program Files/Go/src/database/sql/sql.go:1601 +0xed
+database/sql.(*DB).Exec(...)
+	C:/Program Files/Go/src/database/sql/sql.go:1618
+myfishing/backend/models.(*testRepository).CreateTest(0x5d6d20, {{0xc00009d3b0, 0xc00011b960}, 0x1, 0x1})
+	C:/Users/klose/workspace/myfishing/backend/models/test.go:53 +0x21c
+myfishing/backend/controllers.createTest({0x5dbae8, 0xc0001800e0}, 0xc0000e8400, 0xc0000a06e0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:98 +0x402
+myfishing/backend/controllers.(*testHandler).HandleTest(0x800, {0x5dbae8, 0xc0001800e0}, 0x0)
+	C:/Users/klose/workspace/myfishing/backend/controllers/routetest.go:46 +0xa5
+net/http.HandlerFunc.ServeHTTP(0x2697913c270, {0x5dbae8, 0xc0001800e0}, 0xc0001800e0)
+	C:/Program Files/Go/src/net/http/server.go:2046 +0x2f
+net/http.(*ServeMux).ServeHTTP(0x0, {0x5dbae8, 0xc0001800e0}, 0xc0000e8400)
+	C:/Program Files/Go/src/net/http/server.go:2424 +0x149
+net/http.serverHandler.ServeHTTP({0x5daf30}, {0x5dbae8, 0xc0001800e0}, 0xc0000e8400)
+	C:/Program Files/Go/src/net/http/server.go:2878 +0x43b
+net/http.(*conn).serve(0xc0000ad360, {0x5dcda0, 0xc00008cde0})
+	C:/Program Files/Go/src/net/http/server.go:1929 +0xb08
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3033 +0x4e8
+2022/05/26 21:21:35 test.go:59: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= $1,
+		id = $2,
+		age = $3, 
+		) values ($1, $2, $3)' at line 2
+2022/05/26 21:38:53 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:65)
+2022/05/26 21:47:36 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
+2022/05/26 22:09:38 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
+2022/05/26 22:11:31 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
