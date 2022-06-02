@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-test_dto.go
+/backend/controllers/dto/test_dto.go
 /backend/controllers/routetest.go
 /backend/models/test.go
 
