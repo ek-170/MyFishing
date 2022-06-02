@@ -35,7 +35,7 @@ func (tr *testRepository) GetTest(id string) (test Test, err error) {
 	test = Test{}
 
 	fmt.Println("@@Start Query@@")
-	err = Db.QueryRow(cmd, id).Scan(&test)
+	err = Db.QueryRow(cmd, id).Scan(&test.Name, &test.Id, &test.Age)
 	fmt.Println(test)
 
 	return
@@ -71,16 +71,14 @@ func (tr *testRepository) CreateTest(t Test) (id int, err error) {
 
 func (tr *testRepository) UpdateTest(t Test) (err error) {
 	cmd := `update test set  
-		name = $1,
-		id = $2, 
-		age = $3
-		where id = $4
-		) values ($1, $2, $3, $4)`
+		name = ?,
+		age  = ?
+		where id = ?`
 
 	_, err = Db.Exec(cmd,
 		t.Name,
-		t.Id,
 		t.Age,
+		t.Id,
 	)
 	if err != nil {
 		log.Fatalln(err)
@@ -89,7 +87,7 @@ func (tr *testRepository) UpdateTest(t Test) (err error) {
 }
 
 func (tr *testRepository) DeleteTest(id string) (err error) {
-	cmd := `delete from test where id = $1`
+	cmd := `delete from test where id = ?`
 	_, err = Db.Exec(cmd, id)
 	if err != nil {
 		log.Fatalln(err)

@@ -48,12 +48,14 @@ func getTest(w http.ResponseWriter, r *http.Request, th *testHandler) {
 	fmt.Println("@@id from URL: " + id)
 	if id == "" {
 		http.Error(w, "Invalid ID", 404)
+		return
 	}
 	// GetDiaryをコール
 	fmt.Println("@@Start GetTest(id)@@")
 	d, err := th.tr.GetTest(id)
 	if err != nil {
 		http.Error(w, "Invalid ID~~~", 404)
+		return
 	}
 	// 取得内容をJSONにエンコード
 	fmt.Println("@@Start Encode")
@@ -86,7 +88,6 @@ func createTest(w http.ResponseWriter, r *http.Request, th *testHandler) {
 	fmt.Println("t↓")
 	fmt.Println(t)
 
-	// CreateDiaryをコール
 	fmt.Println("@@CreateTest(t)@@")
 	id, err := th.tr.CreateTest(t)
 	// wに実行結果をヘッダとともに書き込み
@@ -102,6 +103,7 @@ func createTest(w http.ResponseWriter, r *http.Request, th *testHandler) {
 }
 
 func updateTest(w http.ResponseWriter, r *http.Request, th *testHandler) {
+	fmt.Println("@@updateTest()@@")
 	// request bodyを読み込み
 	body := make([]byte, r.ContentLength)
 	r.Body.Read(body)
@@ -112,17 +114,22 @@ func updateTest(w http.ResponseWriter, r *http.Request, th *testHandler) {
 	if idStr == "" {
 		http.Error(w, "Invalid ID", 404)
 	}
+	fmt.Println("@@id from URL: " + idStr)
 
 	id, err := strconv.Atoi(idStr)
+
 	if err != nil {
 		w.WriteHeader(500)
 	}
 	trq.Id = id
 
 	json.Unmarshal(body, &trq)
+	fmt.Println("@@id from URL: " + idStr)
 	t := trq.ConvertTest()
-	// UpdateDiaryをコール
+	// UpdateTestをコール
+	fmt.Println("@@Start UpdateTest(t)")
 	err = th.tr.UpdateTest(t)
+	fmt.Println("@@Finish UpdateTest(t)")
 	// wに実行結果をヘッダとともに書き込み
 	if err != nil {
 		w.WriteHeader(500)

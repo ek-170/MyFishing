@@ -9,7 +9,7 @@ CREATE TABLE users (
   createdAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
 );
 
-CREATE TABLE diaries (
+CREATE TABLE diaries (BETWEEN  AND 
   id           VARCHAR(26) NOT NULL UNIQUE,
   userId       VARCHAR(26),
   fishingDate  DATE,

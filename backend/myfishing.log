@@ -311,3 +311,5 @@ created by net/http.(*Server).Serve
 2022/05/26 21:47:36 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
 2022/05/26 22:09:38 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
 2022/05/26 22:11:31 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
+2022/05/30 22:32:08 test.go:87: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') values (?, ?, ?, ?)' at line 6
+2022/05/30 22:40:20 test.go:87: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values (?, ?, ?, ?)' at line 6
