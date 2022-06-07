@@ -41,6 +41,7 @@ func (dr *diaryRepository) GetDiary(id string) (diary Diary, err error) {
 		userId,
 		fishingDate, 
 		place, 
+		caughtFish,
 		diaryComment, 
 		rod, 
 		method, 
@@ -50,7 +51,7 @@ func (dr *diaryRepository) GetDiary(id string) (diary Diary, err error) {
 		tide,
 		createdAt 
 		from    diaries
-		where   id = $1`
+		where   id = ?`
 	diary = Diary{}
 
 	err = Db.QueryRow(cmd, id).Scan(
@@ -72,25 +73,26 @@ func (dr *diaryRepository) GetDiary(id string) (diary Diary, err error) {
 
 func (dr *diaryRepository) CreateDiary(d Diary) (id int, err error) {
 	cmd := `insert into diaries (
-		id = $1,
-		userId = $2,
-		fishingDate = $3, 
-		place = $4, 
-		diaryComment = $5, 
-		rod = $6, 
-		method = $7, 
-		lure = $8, 
-		weather = $9, 
-		wind = $10,
-		tide = $11,
-		createdAt = $12
-		) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`
+		id,
+		userId,
+		fishingDate, 
+		place, 
+		caughtFish,
+		diaryComment, 
+		rod, 
+		method, 
+		lure, 
+		weather, 
+		wind,
+		tide
+		) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	_, err = Db.Exec(cmd,
 		createUlid(),
 		d.UserId,
-		d.FishingDate,
+		nil,
 		d.Place,
+		d.CaughtFish,
 		d.DiaryComment,
 		d.Rod,
 		d.Method,
@@ -98,7 +100,7 @@ func (dr *diaryRepository) CreateDiary(d Diary) (id int, err error) {
 		d.Weather,
 		d.Wind,
 		d.Tide,
-		time.Now())
+	)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -110,23 +112,24 @@ func (dr *diaryRepository) CreateDiary(d Diary) (id int, err error) {
 
 func (dr *diaryRepository) UpdateDiary(d Diary) (err error) {
 	cmd := `update diaries set  
-		userId = $1,
-		fishingDate = $2, 
-		place = $3, 
-		diaryComment = $4, 
-		rod = $5, 
-		method = $6, 
-		lure = $7, 
-		weather = $8, 
-		wind = $9,
-		tide = $10,
-		where id = $11
-		) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`
+		userId = ?,
+		fishingDate = ?, 
+		place = ?, 
+		caughtFish = ?,
+		diaryComment = ?, 
+		rod = ?, 
+		method = ?, 
+		lure = ?, 
+		weather = ?, 
+		wind = ?,
+		tide = ?,
+		where id = ?`
 
 	_, err = Db.Exec(cmd,
 		d.UserId,
 		d.FishingDate,
 		d.Place,
+		d.CaughtFish,
 		d.DiaryComment,
 		d.Rod,
 		d.Method,
@@ -142,7 +145,7 @@ func (dr *diaryRepository) UpdateDiary(d Diary) (err error) {
 }
 
 func (dr *diaryRepository) DeleteDiary(id string) (err error) {
-	cmd := `delete from diaries where id = $1`
+	cmd := `delete from diaries where id = ?`
 	_, err = Db.Exec(cmd, id)
 	if err != nil {
 		log.Fatalln(err)

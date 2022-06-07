@@ -313,3 +313,9 @@ created by net/http.(*Server).Serve
 2022/05/26 22:11:31 server.go:3159: http: superfluous response.WriteHeader call from myfishing/backend/controllers.getTest (routetest.go:56)
 2022/05/30 22:32:08 test.go:87: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') values (?, ?, ?, ?)' at line 6
 2022/05/30 22:40:20 test.go:87: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values (?, ?, ?, ?)' at line 6
+2022/06/02 22:43:39 diary.go:106: Error 1136: Column count doesn't match value count at row 1
+2022/06/02 22:48:42 diary.go:105: Error 1292: Incorrect date value: '' for column 'fishingDate' at row 1
+2022/06/02 22:50:48 diary.go:105: Error 1364: Field 'createdAt' doesn't have a default value
+2022/06/02 22:57:24 diary.go:105: Error 1452: Cannot add or update a child row: a foreign key constraint fails (`myfishing_dev1`.`diaries`, CONSTRAINT `diaries_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`))
+2022/06/07 22:28:49 diary.go:105: Error 1062: Duplicate entry '0000XSNJG0MQJHBF4QX1EFD6Y3' for key 'diaries.id'
+2022/06/07 22:33:43 diary.go:105: Error 1062: Duplicate entry '0000XSNJG0MQJHBF4QX1EFD6Y3' for key 'diaries.id'

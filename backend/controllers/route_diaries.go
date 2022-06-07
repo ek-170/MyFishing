@@ -29,12 +29,6 @@ func NewDiaryHandler(dr models.DiaryRepository) DiaryHandler {
 }
 
 func (dh *diaryHandler) HandleDiary(w http.ResponseWriter, r *http.Request) {
-	// メソッド化
-	// d := models.Diary{}
-	// switch r.Method {
-	// case http.MethodPost, http.MethodPut:
-	// 	json.NewDecoder(r.Body).Decode(&d)
-	// }
 	switch r.Method {
 	case http.MethodGet:
 		getDiary(w, r, dh)
@@ -64,7 +58,7 @@ func getDiary(w http.ResponseWriter, r *http.Request, dh *diaryHandler) {
 	err = json.NewEncoder(w).Encode(d)
 	// output, _ := json.MarshalIndent(d, "", "\t\t")
 	if err != nil {
-		http.Error(w, "JSON ENCODING FILURE", 500)
+		http.Error(w, "JSON ENCODING FAILURE", 500)
 	}
 	// w にJSON書き込み
 	w.Header().Set("Content-Type", "application/json")
@@ -81,6 +75,8 @@ func createDiary(w http.ResponseWriter, r *http.Request, dh *diaryHandler) {
 	json.Unmarshal(body, &drq)
 	d := drq.ConvertDiary()
 	// CreateDiaryをコール
+	fmt.Println("@d")
+	fmt.Println(d)
 	id, err := dh.dr.CreateDiary(d)
 	// wに実行結果をヘッダとともに書き込み
 	if err != nil {

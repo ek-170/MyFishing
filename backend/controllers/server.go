@@ -10,8 +10,7 @@ import (
 )
 
 func ParseIdFromURL(r *http.Request, validPath *regexp.Regexp, targetPath int) string {
-	fmt.Println("@@Start ParseIdFromURL()@@")
-	fmt.Println("Path Value: " + r.URL.Path)
+
 	q := validPath.FindStringSubmatch(r.URL.Path)
 	fmt.Println(q)
 	if len(q) == 0 {
@@ -24,12 +23,12 @@ func StartMainServer() error {
 	var dr = models.NewDiaryRepository()
 	var dh = NewDiaryHandler(dr)
 
-	var tr = models.NewTestRepository()
-	var th = NewTestHandler(tr)
+	// var tr = models.NewTestRepository()
+	// var th = NewTestHandler(tr)
 
 	http.Handle("/", http.FileServer(http.Dir(consts.Index)))
 
-	http.HandleFunc("/test/", th.HandleTest)
+	// http.HandleFunc("/test/", th.HandleTest)
 	http.HandleFunc("/diaries/", dh.HandleDiary)
 
 	// http.HandleFunc("/search", )
