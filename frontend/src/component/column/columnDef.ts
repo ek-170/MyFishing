@@ -1,5 +1,5 @@
 import { Options, MultiOptions } from 'component/column/input/pickListValueDef'
-import { DiaryId } from 'dataType/diary'
+import { DiaryId } from 'model/diary'
 
 export type ValueType = string | string[] | number | DateForInput
 export type BaseColumnProps = {

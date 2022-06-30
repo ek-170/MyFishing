@@ -11,8 +11,7 @@ import {
     PicklistColumn, 
     MultiPicklistColumn, 
     TextareaColumn, 
-    isDateForInput,
-    DateForInput,
+    isDateForInput
 } from 'component/column/columnDef';
 import {
     textColumns, 
@@ -29,7 +28,8 @@ import { order } from 'page/diary/dialyColumnOrder'
 import { ModalSppiner } from 'component/spinner/modalSpinner'
 import { useNavigate } from 'react-router-dom'
 import { formatDate, DateFormat } from 'utils/format/formatDate'
-import { Diary } from 'dataType/diary'
+import { Diary } from 'model/diary'
+import { fetchDiary } from 'api/httpclient';
 
 
 const DiaryEntry: VFC = () => {
@@ -61,8 +61,10 @@ const DiaryEntry: VFC = () => {
                 // 項目定義情報の取得
                 const columns: Column[] = [...textColumns, ...numberColumns, ...dateColumns, ...picklistColumns, ...multiPicklistColumns, ...textareaColumns];
             
-                // ここから編集時のみの処理
-                    // サーバーから初期値を取得 await
+                // URIからId値を取得
+                // Id値を取得できたら下記処理へ
+                // サーバーから初期値を取得 await
+                await fetchDiary()
 
                     // サーバーからの値をrecordに注入
                     // for(let c of columns){

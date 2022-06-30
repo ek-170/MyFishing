@@ -1,4 +1,4 @@
-import { Diary } from 'dataType/diary'
+import { Diary } from 'model/diary'
 import { DateForInput } from 'component/column/columnDef'
 
 export const testData: Diary = {
